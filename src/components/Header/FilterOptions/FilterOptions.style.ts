@@ -26,7 +26,7 @@ const searchFieldActiveStyles = css<SearchFieldActiveStylesType>`
     `}
 `;
 
-export const FilterOptions = styled.div`
+export const Container = styled.div`
   display: flex;
   gap: 5px;
 `;

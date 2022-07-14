@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SearchField = styled.div`
+export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.grey6};
   padding: 20px 15px;
 `;

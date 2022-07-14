@@ -6,14 +6,14 @@ import { FilterTitleType, FilterValueType } from '@data/filterOptions';
 
 const FilterOptions = () => {
   return (
-    <S.FilterOptions>
+    <S.Container>
       <SearchButton />
       {(Object.entries(filterOptions) as Array<[FilterValueType, FilterTitleType]>).map(
         ([value, title]) => (
           <Filter title={title} value={value} />
         ),
       )}
-    </S.FilterOptions>
+    </S.Container>
   );
 };
 
