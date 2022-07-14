@@ -28,7 +28,10 @@ const searchFieldActiveStyles = css<SearchFieldActiveStylesType>`
 
 export const Container = styled.div`
   display: flex;
+  align-items: center;
   gap: 5px;
+  height: 55px;
+  padding: 0 7px;
 `;
 
 export const Filter = styled.button<FilterActiveStylesType & SearchFieldActiveStylesType>`
