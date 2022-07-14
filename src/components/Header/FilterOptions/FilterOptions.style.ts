@@ -20,10 +20,15 @@ const searchFieldActiveStyles = css<SearchFieldActiveStylesType>`
   ${({ isSearchFieldActive }) =>
     isSearchFieldActive &&
     css`
-      color: ${({ theme }) => theme.colors.white} !important;
+      color: ${({ theme }) => theme.colors.white};
       background-color: ${({ theme }) => theme.colors.blue};
       border: none;
     `}
+`;
+
+export const FilterOptions = styled.div`
+  display: flex;
+  gap: 5px;
 `;
 
 export const Filter = styled.button<FilterActiveStylesType & SearchFieldActiveStylesType>`
