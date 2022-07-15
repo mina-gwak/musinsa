@@ -10,7 +10,7 @@ const FilterOptions = () => {
       <SearchButton />
       {(Object.entries(filterOptions) as Array<[FilterValueType, FilterTitleType]>).map(
         ([value, title]) => (
-          <Filter title={title} value={value} />
+          <Filter key={value} title={title} value={value} />
         ),
       )}
     </S.Container>

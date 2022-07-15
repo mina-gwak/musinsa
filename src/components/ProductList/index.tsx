@@ -9,7 +9,7 @@ const ProductList = () => {
       <S.Separator />
       <S.Container>
         {products[0].list.map((product) => (
-          <Product {...product} />
+          <Product key={product.goodsNo} {...product} />
         ))}
       </S.Container>
     </>
