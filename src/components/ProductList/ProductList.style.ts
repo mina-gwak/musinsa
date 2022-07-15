@@ -1,0 +1,115 @@
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+export const Container = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+export const ImageContainer = styled(Link)`
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 60vw;
+`;
+
+export const Product = styled.li`
+  display: flex;
+  flex-direction: column;
+  width: calc(100% / 2);
+
+  @media (min-width: 768px) {
+    width: calc(100% / 3);
+
+    ${ImageContainer} {
+      height: 40vw;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    width: calc(100% / 4);
+
+    ${ImageContainer} {
+      height: 30vw;
+    }
+  }
+`;
+
+export const Image = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+export const SoldOutLayer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: ${({ theme }) => theme.colors.grey1};
+  font-size: ${({ theme }) => theme.fontSizes.xLarge};
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
+  background-color: ${({ theme }) => theme.colors.white};
+  opacity: 0.8;
+`;
+
+export const Label = styled.span`
+  position: absolute;
+  top: -12%;
+  left: 10px;
+  display: inline-block;
+  width: 33px;
+  height: 26px;
+  color: ${({ theme }) => theme.colors.white};
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  text-align: center;
+  letter-spacing: -0.5px;
+  background-color: ${({ theme }) => theme.colors.green};
+  padding: 6px 0 4px;
+`;
+
+export const ProductInfo = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px;
+`;
+
+export const Brand = styled(Link)`
+  font-size: ${({ theme }) => theme.fontSizes.xSmall};
+  margin-bottom: 8px;
+`;
+
+export const Name = styled(Link)`
+  font-size: ${({ theme }) => theme.fontSizes.medium};
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  line-height: 18px;
+  word-break: break-all;
+  margin-bottom: 4px;
+`;
+
+export const PriceContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const FinalPrice = styled.span`
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
+`;
+
+export const Price = styled.span`
+  color: ${({ theme }) => theme.colors.grey2};
+  font-size: ${({ theme }) => theme.fontSizes.xSmall};
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
+  text-decoration-line: line-through;
+`;
+
+export const SaleRate = styled.span`
+  color: ${({ theme }) => theme.colors.red};
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
+`;

@@ -15,6 +15,7 @@ const colors = {
 };
 
 const fontSizes = {
+  xLarge: '1.25rem', // 20px
   large: '1rem', // 16px
   medium: '0.875rem', // 14px
   small: '0.75rem', // 12px
