@@ -1,7 +1,9 @@
 import { atom } from 'recoil';
 
+import { FilterValueType } from '@data/filterOptions';
+
 interface defaultStateType {
-  filter: string[];
+  filter: FilterValueType[];
   search: string[];
 }
 
