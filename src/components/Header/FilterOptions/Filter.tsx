@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useRecoilState } from 'recoil';
 
 import * as S from '@components/Header/FilterOptions/FilterOptions.style';
 import { FilterTitleType, FilterValueType } from '@data/filterOptions';
+import { activeFilterState } from '@store/filter';
+import { isSearchFieldActiveState } from '@store/searchField';
 
 interface FilterPropsType {
   title: FilterTitleType;
@@ -9,10 +11,22 @@ interface FilterPropsType {
 }
 
 const Filter = ({ title, value }: FilterPropsType) => {
-  // TODO: Recoil 사용
-  const [isFilterActive, setIsFilterActive] = useState(false);
+  const [{ filter }, setActiveFilter] = useRecoilState(activeFilterState);
+  const [isSearchFieldActive, setIsSearchFieldActive] = useRecoilState(isSearchFieldActiveState);
 
-  const toggleFilter = () => setIsFilterActive((prevIsFilterActive) => !prevIsFilterActive);
+  const isFilterActive = filter.includes(value);
+
+  const toggleFilter = () => {
+    const updatedFilter = filter.includes(value)
+      ? filter.filter((activeFilter) => activeFilter !== value)
+      : filter.concat(value);
+
+    setActiveFilter(({ search }) => {
+      return { search, filter: updatedFilter };
+    });
+
+    isSearchFieldActive && setIsSearchFieldActive(false);
+  };
 
   return (
     <S.Filter onClick={toggleFilter} isFilterActive={isFilterActive}>
