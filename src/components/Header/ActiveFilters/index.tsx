@@ -1,16 +1,20 @@
+import { useRecoilValue } from 'recoil';
+
 import ActiveFilter from '@components/Header/ActiveFilters/ActiveFilter';
 import * as S from '@components/Header/ActiveFilters/ActiveFilters.style';
 import Icon from '@components/common/Icon';
 import { ICON_NAME, ICON_SIZE } from '@components/common/Icon/constants';
+import { activeFilterState } from '@store/filter';
 
 const ActiveFilters = () => {
-  // TODO: 활성화된 필터 목록 가져와서 사용하기
-  const filterList = ['세일상품', '단독상품', '품절포함'];
+  const { filter, search } = useRecoilValue(activeFilterState);
 
-  return (
+  const isActiveFilterExist = filter.length > 0 || search.length > 0;
+
+  return isActiveFilterExist ? (
     <S.Container>
       <S.ActiveFilters>
-        {filterList.map((value) => (
+        {filter.concat(search).map((value) => (
           <li key={value}>
             <ActiveFilter value={value} />
           </li>
@@ -20,7 +24,7 @@ const ActiveFilters = () => {
         <Icon iconName={ICON_NAME.REFRESH} iconSize={ICON_SIZE.LARGE} />
       </S.RefreshButton>
     </S.Container>
-  );
+  ) : null;
 };
 
 export default ActiveFilters;
