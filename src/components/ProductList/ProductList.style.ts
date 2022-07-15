@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.ul`
@@ -6,7 +5,7 @@ export const Container = styled.ul`
   flex-wrap: wrap;
 `;
 
-export const ImageContainer = styled(Link)`
+export const ImageContainer = styled.a`
   position: relative;
   display: block;
   width: 100%;
@@ -31,6 +30,22 @@ export const Product = styled.li`
 
     ${ImageContainer} {
       height: 30vw;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    width: calc(100% / 5);
+
+    ${ImageContainer} {
+      height: 25vw;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    width: calc(100% / 6);
+
+    ${ImageContainer} {
+      height: 20vw;
     }
   }
 `;
@@ -80,16 +95,21 @@ export const ProductInfo = styled.div`
   padding: 20px 10px;
 `;
 
-export const Brand = styled(Link)`
+export const Brand = styled.a`
   font-size: ${({ theme }) => theme.fontSizes.xSmall};
   margin-bottom: 8px;
 `;
 
-export const Name = styled(Link)`
+export const Name = styled.a`
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   font-size: ${({ theme }) => theme.fontSizes.medium};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   line-height: 18px;
   word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin-bottom: 4px;
 `;
 
