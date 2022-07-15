@@ -12,7 +12,7 @@ const ProductList = () => {
     if (!search.length && !filter.length) return products[0].list;
 
     return products[0].list.filter((product) => {
-      const isSearchValueExist = search.some(
+      const isSearchValueExist = search.every(
         (value) => product.goodsName.includes(value) || product.brandName.includes(value),
       );
 
