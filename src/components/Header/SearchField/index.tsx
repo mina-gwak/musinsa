@@ -1,22 +1,32 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import * as S from '@components/Header/SearchField/SearchField.style';
 import Icon from '@components/common/Icon';
 import { ICON_NAME, ICON_SIZE } from '@components/common/Icon/constants';
+import { activeFilterState } from '@store/filter';
 import { isSearchFieldActiveState } from '@store/searchField';
 
 const SearchField = () => {
   const [value, setValue] = useState('');
   const isSearchFieldActive = useRecoilValue(isSearchFieldActiveState);
+  const setActiveFilter = useSetRecoilState(activeFilterState);
 
   const isValueExist = value.length > 0;
 
   const resetValue = () => setValue('');
 
+  const handleFormSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    setActiveFilter(({ filter, search }) => {
+      return { filter, search: [...new Set([...search, value])] };
+    });
+    resetValue();
+  };
+
   return isSearchFieldActive ? (
-    <S.Container>
+    <S.Container onSubmit={handleFormSubmit}>
       <S.SearchInputBox>
         <Icon iconName={ICON_NAME.SEARCH} iconSize={ICON_SIZE.LARGE} />
         <S.SearchInput
