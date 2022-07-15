@@ -5,11 +5,14 @@ import { products } from '@data';
 const ProductList = () => {
   // TODO: 데이터 요청 후 보여주도록 변경
   return (
-    <S.Container>
-      {products[0].list.map((product) => (
-        <Product {...product} />
-      ))}
-    </S.Container>
+    <>
+      <S.Separator />
+      <S.Container>
+        {products[0].list.map((product) => (
+          <Product {...product} />
+        ))}
+      </S.Container>
+    </>
   );
 };
 

@@ -19,7 +19,6 @@ const Header = () => {
       <FilterOptions />
       <SearchField />
       <ActiveFilters />
-      <S.Separator />
     </S.Container>
   );
 };

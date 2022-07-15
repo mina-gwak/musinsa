@@ -5,6 +5,11 @@ export const Container = styled.ul`
   flex-wrap: wrap;
 `;
 
+export const Separator = styled.div`
+  height: 10px;
+  background-color: ${({ theme }) => theme.colors.grey5};
+`;
+
 export const ImageContainer = styled.a`
   position: relative;
   display: block;
