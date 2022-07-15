@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useRecoilState } from 'recoil';
 
 import * as S from '@components/Header/FilterOptions/FilterOptions.style';
 import Icon from '@components/common/Icon';
 import { ICON_NAME, ICON_SIZE } from '@components/common/Icon/constants';
+import { isSearchFieldActiveState } from '@store/searchField';
 
 const SearchButton = () => {
-  // TODO: Recoil 사용
-  const [isSearchFieldActive, setIsSearchFieldActive] = useState(false);
+  const [isSearchFieldActive, setIsSearchFieldActive] = useRecoilState(isSearchFieldActiveState);
 
   // TODO: 검색 필터 값 확인하는 것으로 수정
   const isFilterActive = true;
