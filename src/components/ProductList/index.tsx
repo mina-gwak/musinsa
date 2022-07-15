@@ -1,14 +1,30 @@
+import { useRecoilValue } from 'recoil';
+
 import Product from '@components/ProductList/Product';
 import * as S from '@components/ProductList/ProductList.style';
 import { products } from '@data';
+import { activeFilterState } from '@store/filter';
 
 const ProductList = () => {
-  // TODO: 데이터 요청 후 보여주도록 변경
+  const { filter, search } = useRecoilValue(activeFilterState);
+
+  const filteredData = () => {
+    if (!search.length && !filter.length) return products[0].list;
+
+    return products[0].list.filter((product) => {
+      const isSearchValueExist = search.some(
+        (value) => product.goodsName.includes(value) || product.brandName.includes(value),
+      );
+
+      return isSearchValueExist;
+    });
+  };
+
   return (
     <>
       <S.Separator />
       <S.Container>
-        {products[0].list.map((product) => (
+        {filteredData().map((product) => (
           <Product key={product.goodsNo} {...product} />
         ))}
       </S.Container>
