@@ -26,14 +26,14 @@ const Product = ({
 
   return (
     <S.Product>
-      <S.ImageContainer to={linkUrl}>
+      <S.ImageContainer href={linkUrl}>
         <S.Image src={imageUrl} alt={goodsName} onError={handleImageError} />
         {isSoldOut && <S.SoldOutLayer>SOLD OUT</S.SoldOutLayer>}
       </S.ImageContainer>
       <S.ProductInfo>
         {isExclusive && <S.Label>단독</S.Label>}
-        <S.Brand to={brandLinkUrl}>{brandName}</S.Brand>
-        <S.Name to={linkUrl}>
+        <S.Brand href={brandLinkUrl}>{brandName}</S.Brand>
+        <S.Name href={linkUrl}>
           <h2>{goodsName}</h2>
         </S.Name>
         {isSale ? (
