@@ -11,7 +11,7 @@ const ActiveFilters = () => {
     <S.Container>
       <S.ActiveFilters>
         {filterList.map((value) => (
-          <li>
+          <li key={value}>
             <ActiveFilter value={value} />
           </li>
         ))}
