@@ -1,15 +1,16 @@
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import * as S from '@components/Header/FilterOptions/FilterOptions.style';
 import Icon from '@components/common/Icon';
 import { ICON_NAME, ICON_SIZE } from '@components/common/Icon/constants';
+import { activeFilterState } from '@store/filter';
 import { isSearchFieldActiveState } from '@store/searchField';
 
 const SearchButton = () => {
   const [isSearchFieldActive, setIsSearchFieldActive] = useRecoilState(isSearchFieldActiveState);
+  const { search } = useRecoilValue(activeFilterState);
 
-  // TODO: 검색 필터 값 확인하는 것으로 수정
-  const isFilterActive = true;
+  const isFilterActive = search.length > 0;
 
   const toggleButton = () =>
     setIsSearchFieldActive((prevIsSearchFieldActive) => !prevIsSearchFieldActive);
