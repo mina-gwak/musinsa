@@ -1,5 +1,7 @@
+import ProductSearch from '@pages/ProductSearch';
+
 const App = () => {
-  return <div className='App' />;
+  return <ProductSearch />;
 };
 
 export default App;
