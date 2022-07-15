@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
-export const Container = styled.header``;
-
-export const Separator = styled.div`
-  height: 10px;
-  background-color: ${({ theme }) => theme.colors.grey5};
+export const Container = styled.header`
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 export const AppBar = styled.div`
