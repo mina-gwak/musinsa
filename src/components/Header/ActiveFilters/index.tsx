@@ -1,4 +1,4 @@
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useResetRecoilState } from 'recoil';
 
 import ActiveFilter from '@components/Header/ActiveFilters/ActiveFilter';
 import * as S from '@components/Header/ActiveFilters/ActiveFilters.style';
@@ -10,6 +10,7 @@ import { activeFilterState } from '@store/filter';
 
 const ActiveFilters = () => {
   const { filter, search } = useRecoilValue(activeFilterState);
+  const resetActiveFilter = useResetRecoilState(activeFilterState);
 
   const isActiveFilterExist = filter.length > 0 || search.length > 0;
 
@@ -27,7 +28,7 @@ const ActiveFilters = () => {
           </li>
         ))}
       </S.ActiveFilters>
-      <S.RefreshButton>
+      <S.RefreshButton onClick={resetActiveFilter}>
         <Icon iconName={ICON_NAME.REFRESH} iconSize={ICON_SIZE.LARGE} />
       </S.RefreshButton>
     </S.Container>
