@@ -2,7 +2,7 @@
 /* tslint:disable */
 
 /**
- * Mock Service Worker (0.44.0).
+ * Mock Service Worker (0.44.1).
  * @see https://github.com/mswjs/msw
  * - Please do NOT modify this file.
  * - Please do NOT serve this file on production.
@@ -155,8 +155,7 @@ async function handleRequest(event, requestId) {
           ok: clonedResponse.ok,
           status: clonedResponse.status,
           statusText: clonedResponse.statusText,
-          body:
-            clonedResponse.body === null ? null : await clonedResponse.text(),
+          body: clonedResponse.body === null ? null : await clonedResponse.text(),
           headers: Object.fromEntries(clonedResponse.headers.entries()),
           redirected: clonedResponse.redirected,
         },
@@ -234,9 +233,7 @@ async function getResponse(event, client, requestId) {
   // Create a communication channel scoped to the current request.
   // This way events can be exchanged outside of the worker's global
   // "message" event listener (i.e. abstracted into functions).
-  const operationChannel = new BroadcastChannel(
-    `msw-response-stream-${requestId}`,
-  );
+  const operationChannel = new BroadcastChannel(`msw-response-stream-${requestId}`);
 
   // Notify the client that a request has been intercepted.
   const clientMessage = await sendToClient(client, {
