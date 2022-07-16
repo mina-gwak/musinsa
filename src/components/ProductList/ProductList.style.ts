@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-export const Container = styled.ul`
+export const Container = styled.div`
+  display: flex;
+  flex-grow: 1;
+`;
+
+export const ProductList = styled.ul`
   display: flex;
   flex-wrap: wrap;
 `;
@@ -8,6 +13,16 @@ export const Container = styled.ul`
 export const Separator = styled.div`
   height: 10px;
   background-color: ${({ theme }) => theme.colors.grey5};
+`;
+
+export const NoSearchResult = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  color: ${({ theme }) => theme.colors.grey2};
+  font-size: ${({ theme }) => theme.fontSizes.medium};
 `;
 
 export const ImageContainer = styled.a`
