@@ -8,14 +8,15 @@ import { ThemeProvider } from 'styled-components';
 
 import GlobalStyle from '@assets/styles/GlobalStyle';
 import { theme } from '@assets/styles/theme';
+import { worker } from '@mocks/browser';
 
 import App from './App';
 
+worker.start();
+
 export const queryClient = new QueryClient();
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement,
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <React.StrictMode>
