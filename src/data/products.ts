@@ -142,6 +142,7 @@ export const products = [
         isExclusive: true,
       },
     ],
+    isLast: false,
   },
   {
     list: [
@@ -286,6 +287,7 @@ export const products = [
         isExclusive: false,
       },
     ],
+    isLast: false,
   },
   {
     list: [
@@ -430,6 +432,7 @@ export const products = [
         isExclusive: false,
       },
     ],
+    isLast: false,
   },
   {
     list: [
@@ -574,6 +577,7 @@ export const products = [
         isExclusive: false,
       },
     ],
+    isLast: true,
   },
 ];
 
