@@ -8,6 +8,7 @@ export const Container = styled.div`
 export const ProductList = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 `;
 
 export const Separator = styled.div`
