@@ -4,11 +4,12 @@ import { ICON_NAME, ICON_SIZE } from '@components/common/Icon/constants';
 
 interface ActiveFilterPropsType {
   value: string;
+  deactivateFilter: () => void;
 }
 
-const ActiveFilter = ({ value }: ActiveFilterPropsType) => {
+const ActiveFilter = ({ value, deactivateFilter }: ActiveFilterPropsType) => {
   return (
-    <S.ActiveFilter>
+    <S.ActiveFilter onClick={deactivateFilter}>
       {value}
       <Icon iconName={ICON_NAME.CLOSE} iconSize={ICON_SIZE.SMALL} />
     </S.ActiveFilter>
