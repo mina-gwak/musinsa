@@ -2,6 +2,8 @@ import { useRecoilValue } from 'recoil';
 
 import Product from '@components/ProductList/Product';
 import * as S from '@components/ProductList/ProductList.style';
+import Icon from '@components/common/Icon';
+import { ICON_NAME, ICON_SIZE } from '@components/common/Icon/constants';
 import { products } from '@data';
 import { activeFilterState } from '@store/filter';
 
@@ -36,9 +38,17 @@ const ProductList = () => {
     <>
       <S.Separator />
       <S.Container>
-        {filteredData().map((product) => (
-          <Product key={product.goodsNo} {...product} />
-        ))}
+        <S.ProductList>
+          {filteredData().map((product) => (
+            <Product key={product.goodsNo} {...product} />
+          ))}
+        </S.ProductList>
+        {!filteredData().length && (
+          <S.NoSearchResult>
+            <Icon iconName={ICON_NAME.EMPTY} iconSize={ICON_SIZE.X_LARGE} />
+            검색 결과 없음
+          </S.NoSearchResult>
+        )}
       </S.Container>
     </>
   );
