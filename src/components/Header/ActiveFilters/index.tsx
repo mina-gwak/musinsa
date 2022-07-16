@@ -1,4 +1,4 @@
-import { useRecoilValue, useResetRecoilState } from 'recoil';
+import { useRecoilState, useResetRecoilState } from 'recoil';
 
 import ActiveFilter from '@components/Header/ActiveFilters/ActiveFilter';
 import * as S from '@components/Header/ActiveFilters/ActiveFilters.style';
@@ -9,22 +9,31 @@ import { FilterValueType } from '@data/filterOptions';
 import { activeFilterState } from '@store/filter';
 
 const ActiveFilters = () => {
-  const { filter, search } = useRecoilValue(activeFilterState);
+  const [{ filter, search }, setActiveFilter] = useRecoilState(activeFilterState);
   const resetActiveFilter = useResetRecoilState(activeFilterState);
 
   const isActiveFilterExist = filter.length > 0 || search.length > 0;
+
+  const deactivateFilter = (value: FilterValueType | string) => () => {
+    setActiveFilter(({ filter, search }) => {
+      return {
+        filter: filter.filter((activeFilter) => activeFilter !== value),
+        search: search.filter((activeFilter) => activeFilter !== value),
+      };
+    });
+  };
 
   return isActiveFilterExist ? (
     <S.Container>
       <S.ActiveFilters>
         {filter.map((value: FilterValueType) => (
           <li key={value}>
-            <ActiveFilter value={filterOptions[value]} />
+            <ActiveFilter value={filterOptions[value]} deactivateFilter={deactivateFilter(value)} />
           </li>
         ))}
         {search.map((value: string) => (
           <li key={value}>
-            <ActiveFilter value={value} />
+            <ActiveFilter value={value} deactivateFilter={deactivateFilter(value)} />
           </li>
         ))}
       </S.ActiveFilters>
