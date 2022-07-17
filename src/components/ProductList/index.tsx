@@ -5,31 +5,25 @@ import * as S from '@components/ProductList/ProductList.style';
 import Icon from '@components/common/Icon';
 import { ICON_NAME, ICON_SIZE } from '@components/common/Icon/constants';
 import useFilterData from '@hooks/useFilterData';
+import useObserver from '@hooks/useObserver';
 import { useProductQuery } from '@query/product';
 
 const ProductList = () => {
   const productRef = useRef<HTMLLIElement>(null);
+
+  const [observe, disconnect] = useObserver({
+    ref: productRef,
+    callback: () => hasNextPage && fetchNextPage(),
+    threshold: 0.5,
+  });
+
   const { data, hasNextPage, fetchNextPage } = useProductQuery();
 
   const filteredData = useFilterData(data);
 
-  const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        hasNextPage && fetchNextPage();
-      }
-    });
-  };
-
   useEffect(() => {
-    let observer: IntersectionObserver;
-    if (productRef.current) {
-      observer = new IntersectionObserver(handleIntersection, {
-        threshold: 0.5,
-      });
-      observer.observe(productRef.current);
-    }
-    return () => observer && observer.disconnect();
+    observe();
+    return () => disconnect();
   }, [filteredData]);
 
   return filteredData ? (
