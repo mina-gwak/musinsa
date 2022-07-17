@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { flexCenter } from '@assets/styles/mixin';
+
 interface FilterActiveStylesType {
   isFilterActive: boolean;
 }
@@ -35,9 +37,7 @@ export const Container = styled.div`
 `;
 
 export const Filter = styled.button<FilterActiveStylesType & SearchFieldActiveStylesType>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${flexCenter};
   gap: 3px;
   width: 79px;
   height: 35px;

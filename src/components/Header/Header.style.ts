@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { flexCenter } from '@assets/styles/mixin';
+
 export const Container = styled.header`
   position: sticky;
   top: 0;
@@ -10,8 +12,6 @@ export const Container = styled.header`
 `;
 
 export const AppBar = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${flexCenter};
   height: 50px;
 `;
