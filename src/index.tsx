@@ -8,13 +8,14 @@ import { ThemeProvider } from 'styled-components';
 
 import GlobalStyle from '@assets/styles/GlobalStyle';
 import { theme } from '@assets/styles/theme';
+import { BASE_URL } from '@constants/baseUrl';
 import { worker } from '@mocks/browser';
 
 import App from './App';
 
 worker.start({
   serviceWorker: {
-    url: `${process.env.REACT_APP_BASE_URL}/mockServiceWorker.js`,
+    url: `${BASE_URL}/mockServiceWorker.js`,
   },
 });
 
