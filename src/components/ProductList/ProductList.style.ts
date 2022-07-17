@@ -2,7 +2,13 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const ProductList = styled.ul`
@@ -31,6 +37,11 @@ export const ImageContainer = styled.a`
   display: block;
   width: 100%;
   height: 60vw;
+`;
+
+export const LoadingSpinnerContainer = styled.div`
+  width: 100%;
+  height: 100px;
 `;
 
 export const Product = styled.li`
