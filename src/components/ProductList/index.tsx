@@ -12,13 +12,13 @@ import { useProductQuery } from '@query/product';
 const ProductList = () => {
   const productRef = useRef<HTMLLIElement>(null);
 
+  const { isLoading, data, hasNextPage, fetchNextPage } = useProductQuery();
+
   const [observe, disconnect] = useObserver({
     ref: productRef,
     callback: () => hasNextPage && fetchNextPage(),
     threshold: 0.5,
   });
-
-  const { isLoading, data, hasNextPage, fetchNextPage } = useProductQuery();
 
   const filteredData = useFilterData(data);
 

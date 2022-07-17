@@ -15,14 +15,10 @@ const useObserver = <T extends Element>({
 }: useObserverPropsType<T>): useObserverReturnType => {
   let observer: IntersectionObserver;
 
-  const handleIntersection = (
-    entries: IntersectionObserverEntry[],
-    observer: IntersectionObserver,
-  ) => {
+  const handleIntersection = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         callback();
-        observer.disconnect();
       }
     });
   };

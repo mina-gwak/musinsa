@@ -1,4 +1,4 @@
-import { forwardRef, SyntheticEvent, useImperativeHandle, useRef } from 'react';
+import { forwardRef, SyntheticEvent } from 'react';
 
 import { Images } from '@assets/images';
 import * as S from '@components/ProductList/ProductList.style';
@@ -22,18 +22,14 @@ const Product = forwardRef<HTMLLIElement, ProductType>(
     },
     ref?,
   ) => {
-    const productRef = useRef<HTMLLIElement>(null);
-
     const handleImageError = (event: SyntheticEvent<HTMLImageElement>) => {
       const image = event.target as HTMLImageElement;
       image.src = Images.DefaultImage;
       image.style.objectFit = 'fill';
     };
 
-    useImperativeHandle(ref, () => productRef.current as HTMLLIElement, [ref]);
-
     return (
-      <S.Product ref={productRef}>
+      <S.Product ref={ref}>
         <S.ImageContainer href={linkUrl}>
           <S.Image src={imageUrl} alt={goodsName} onError={handleImageError} />
           {isSoldOut && <S.SoldOutLayer>SOLD OUT</S.SoldOutLayer>}
