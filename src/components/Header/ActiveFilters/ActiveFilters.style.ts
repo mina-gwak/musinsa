@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { flexCenter } from '@assets/styles/mixin';
+
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -24,8 +26,7 @@ export const ActiveFilters = styled.ul`
 `;
 
 export const ActiveFilter = styled.button`
-  display: flex;
-  align-items: center;
+  ${flexCenter};
   gap: 4px;
   height: 26px;
   color: ${({ theme }) => theme.colors.white};

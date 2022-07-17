@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { flexCenter } from '@assets/styles/mixin';
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -9,6 +11,7 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 `;
 
 export const ProductList = styled.ul`
@@ -23,10 +26,8 @@ export const Separator = styled.div`
 `;
 
 export const NoSearchResult = styled.div`
-  display: flex;
+  ${flexCenter};
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   flex-grow: 1;
   color: ${({ theme }) => theme.colors.grey2};
   font-size: ${({ theme }) => theme.fontSizes.medium};
@@ -90,12 +91,10 @@ export const Image = styled.img`
 `;
 
 export const SoldOutLayer = styled.div`
+  ${flexCenter};
   position: absolute;
   top: 0;
   left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 100%;
   color: ${({ theme }) => theme.colors.grey1};
