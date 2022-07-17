@@ -8,7 +8,7 @@ export default {
   component: Icon,
   args: {
     iconName: ICON_NAME.SEARCH,
-    iconSize: ICON_SIZE.MEDIUM,
+    iconSize: ICON_SIZE.X_LARGE,
   },
   argTypes: {
     iconName: {
