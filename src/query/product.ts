@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useInfiniteQuery } from 'react-query';
 
 import { PRODUCT_API } from '@constants';
+import { BASE_URL } from '@constants/baseUrl';
 import { ProductType } from '@data/products';
 
 interface FetchProductPropsType {
@@ -17,7 +18,7 @@ export interface FetchProductsReturnType {
 export const fetchProducts = async ({
   pageParam = 0,
 }: FetchProductPropsType): Promise<FetchProductsReturnType> => {
-  const response = await axios.get(`${PRODUCT_API}`, {
+  const response = await axios.get(`${BASE_URL}${PRODUCT_API}`, {
     params: {
       page: pageParam,
     },
@@ -34,5 +35,6 @@ export const useProductQuery = () =>
     },
     refetchOnMount: false,
     refetchOnWindowFocus: false,
-    retry: false,
+    retry: 1,
+    onError: (error) => console.log(error),
   });

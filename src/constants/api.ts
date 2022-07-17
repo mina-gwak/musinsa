@@ -1,1 +1,1 @@
-export const PRODUCT_API = '/api/products';
+export const PRODUCT_API = '/musinsa/api/products';

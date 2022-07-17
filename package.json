@@ -1,5 +1,6 @@
 {
   "name": "musinsa",
+  "homepage": "https://mina-gwak.github.io/musinsa/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -28,7 +29,9 @@
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "deploy": "gh-pages -d build",
+    "chromatic": "npx chromatic --project-token=8f2974a57fe9"
   },
   "eslintConfig": {
     "extends": [
@@ -76,11 +79,13 @@
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "chromatic": "^6.7.0",
     "customize-cra": "^1.0.0",
     "eslint": "^8.19.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^3.2.5",
+    "gh-pages": "^4.0.0",
     "msw": "^0.44.1",
     "prettier": "^2.7.1",
     "react-app-rewired": "^2.2.1",
@@ -88,5 +93,7 @@
   },
   "msw": {
     "workerDirectory": "public"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "musinsa@0.1.0"
 }
